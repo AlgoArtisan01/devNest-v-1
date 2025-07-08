@@ -39,7 +39,6 @@
 //   }
 // };
 
-
 // //////////////
 
 import { NextResponse } from "next/server";
@@ -53,7 +52,9 @@ export const POST = async (request: Request) => {
     // Validate the input
     if (!question || typeof question !== "string") {
       return NextResponse.json(
-        { error: "Invalid input: 'question' is required and must be a string." },
+        {
+          error: "Invalid input: 'question' is required and must be a string.",
+        },
         { status: 400 }
       );
     }
@@ -66,7 +67,7 @@ export const POST = async (request: Request) => {
 
   try {
     const API_KEY = process.env.GEMINI_API_KEY;
-    const API_URL = `https://generativelanguage.googleapis.com/v1/models/gemini-1.5-pro:generateContent?key=${API_KEY}`;
+    const API_URL = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=${API_KEY}`;
 
     // Add a timeout mechanism (e.g., 180 seconds to avoid Vercel's 10-second timeout)
     const controller = new AbortController();
@@ -102,13 +103,16 @@ export const POST = async (request: Request) => {
     }
 
     const data = await response.json();
-    const reply = data.candidates[0]?.content?.parts[0]?.text || "No response available.";
+    const reply =
+      data.candidates[0]?.content?.parts[0]?.text || "No response available.";
 
     return NextResponse.json({ reply });
   } catch (error: any) {
     if (error.name === "AbortError") {
       return NextResponse.json(
-        { error: "Request timed out. Please try again with a simpler question." },
+        {
+          error: "Request timed out. Please try again with a simpler question.",
+        },
         { status: 504 }
       );
     }
