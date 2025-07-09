@@ -3,11 +3,11 @@
 **DevNest** is a **full-stack Q&A platform** where developers get **instant AI answers** (Gemini API) and **community-validated solutions**. Built with **Next.js**, **MongoDB**, and **Clerk Auth**, it's like Stack Overflow — but smarter, faster, and gamified.  
 
 <p align="center">
-  <img src="ss.png" alt="devNest Home Page" width="400"/>
+  <img src="ss.png" alt="devNest Home Page" width="650"/>
 </p>
 
 ## 🌟 Live Website  
-Experience DevNest in action:  
+Experience in action:  
 🔗 **[https://dev-nest-v-1.vercel.app](https://dev-nest-v-1.vercel.app/)**
 
 ## ✨ Features  
